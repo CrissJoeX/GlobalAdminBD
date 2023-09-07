@@ -11,23 +11,34 @@
     echo "<h1>BASE DE DATOS VETERINARIA</h1>";
     echo "<h3>EXPEDIENTE DE PACIENTES</h3>";
     //echo "<a href = 'index.php'>Expediente</a><br><br>";
+ 
+    echo 'Insertar Expediente
+    <form action="insertar.php" method = "post">
+    <p>idExpediente: <input type="text" name="idEx"></p>
+    <p>idMascota: <input type="text" name="idMasc"></p>
+    <p>idVacuna: <input type = "text" name = "idVac"></p>
+    <p>diagnostico: <input type = "text" name = "diag"></p>
+    <p>estatus: <input type = "text" name = "est"></p>
+    <p><input type="submit" value="Guardar"></p>
+    </form>';
 
 
 	if ($result = $conexion->query($query)) {
 
 		while ($row = $result->fetch_assoc()) {
-			$idEx = $row["NumeroExpediente"];
-            $idMasc = $row["NombreMascota"];
-            $idVac = $row["NombreVacuna"];
-            $diag = $row["diagnostico"];
-            $estatus = $row["estatus"];
+			$NumExp = $row["NumeroExpediente"];
+            $NomMasc = $row["NombreMascota"];
+            $NomVac = $row["NombreVacuna"];
+            $diagno = $row["diagnostico"];
+            $estat = $row["estatus"];
 			
-            echo $idEx . " " . $idMasc . " " . $idVac. " " . $diag . " " . $estatus .
-            "<a href='insertar.php?id=".$idEx."'> Insertar</a><br>";
+            echo $NumExp . " " . $NomMasc . " " . $NomVac. " " . $diagno . " " . $estat . "</a><br>";
+            //<a href="insertar.php?id=".$idEx."'> Insertar</a><br>
 		}
 
         $result->free();
 
         }
+
 
 ?>
