@@ -32,7 +32,7 @@
             $diagno = $row["diagnostico"];
             $estat = $row["estatus"];
 			
-            echo $NumExp . " " . $NomMasc . " " . $NomVac. " " . $diagno . " " . $estat . "</a><br>";
+            echo $NumExp . " " . $NomMasc . " " . $NomVac. " " . $diagno . " " . $estat . "<a href='borrar.php?id=".$NumExp."'> eliminar</a><br>";
             //<a href="insertar.php?id=".$idEx."'> Insertar</a><br>
 		}
 
