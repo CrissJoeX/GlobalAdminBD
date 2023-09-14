@@ -6,7 +6,11 @@ date_default_timezone_set('America/Mexico_City');
 
 $fechaActual = date("d-m-Y");
 
-$query =  "SELECT * FROM tipodePago";
+$query = "SELECT ex.idExpediente as NumeroExpediente, 
+masc.nombre as NombreMascota, vac.nombre as NombreVacuna, 
+ex.diagnostico, ex.estatus FROM expediente as ex
+JOIN mascota as masc ON ex.idMascota = masc.idMascota
+JOIN vacuna as vac ON ex.idVacuna = vac.idVacuna WHERE ex.estatus = 1 ORDER BY NumeroExpediente ASC";
 
 
 $pdf = new FPDF();
@@ -31,9 +35,18 @@ $pdf->image("imagen/imagen1.jpg",230,15,35,30);
 $pdf->Cell(15,10, "No.", 'LR', 0);
 $pdf->Cell(50,10, "Mascota", 'LR', 0);
 $pdf->Cell(50,10, "Vacuna", 'LR', 0);
-$pdf->Cell(80,10, "Diagnostico", 'LR', 1);
+$pdf->Cell(80,10, utf8_decode("Diagnóstico"), 'LR', 1);
  
+$result = $conexion->query($query);
 
+foreach($result as $row)
+{
+    $pdf->Cell(15,10, $row['NumeroExpediente'], 'LR', 0);
+    $pdf->Cell(50,10, $row['NombreMascota'], 'LR', 0);
+    $pdf->Cell(50,10, $row['NombreVacuna'], 'LR', 0);
+    $pdf->Cell(80,10, utf8_decode($row['diagnostico']), 'LR', 1);
+   
+}
 //$pdf->Text("100" , "20 ", "Reporte de Veterinaria");
 
 /*if ($result = $conexion->query($query)) {
