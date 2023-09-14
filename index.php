@@ -1,6 +1,7 @@
 <?php
 require("conexion.php");
-echo "Este es mi Proyecto Global <br>";
+
+echo "Este es mi Proyecto Global <br><br>";
 
 $query = "SELECT ex.idExpediente as NumeroExpediente, 
 masc.nombre as NombreMascota, vac.nombre as NombreVacuna, 
@@ -21,7 +22,7 @@ echo 'Insertar Expediente
     <p><input type="submit" value="Guardar"></p>
 </form>';
 
-
+echo "<a href = 'reporte.php'> Reporte </a> <br>";
 
 if ($result = $conexion->query($query)) {
     while ($row = $result->fetch_assoc()) {
