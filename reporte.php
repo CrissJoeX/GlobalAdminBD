@@ -32,19 +32,19 @@ $pdf->Cell(50,15,utf8_decode('Fecha: ' . $fechaActual),0,1);
 $pdf->image("imagen/imagen2.jpg",20,15,32,32);
 $pdf->image("imagen/imagen1.jpg",230,15,35,30);
 
-$pdf->Cell(15,10, "No.", 'LR', 0);
-$pdf->Cell(50,10, "Mascota", 'LR', 0);
-$pdf->Cell(50,10, "Vacuna", 'LR', 0);
-$pdf->Cell(80,10, utf8_decode("Diagnóstico"), 'LR', 1);
+$pdf->Cell(15,10, "No.", 'LRBT', 0);
+$pdf->Cell(50,10, "Mascota", 'LRBT', 0);
+$pdf->Cell(50,10, "Vacuna", 'LRBT', 0);
+$pdf->Cell(80,10, utf8_decode("Diagnóstico"), 'LRBT', 1);
  
 $result = $conexion->query($query);
 
 foreach($result as $row)
 {
-    $pdf->Cell(15,10, $row['NumeroExpediente'], 'LR', 0);
-    $pdf->Cell(50,10, $row['NombreMascota'], 'LR', 0);
-    $pdf->Cell(50,10, $row['NombreVacuna'], 'LR', 0);
-    $pdf->Cell(80,10, utf8_decode($row['diagnostico']), 'LR', 1);
+    $pdf->Cell(15,10, $row['NumeroExpediente'], 'LRBT', 0);
+    $pdf->Cell(50,10, $row['NombreMascota'], 'LRBT', 0);
+    $pdf->Cell(50,10, $row['NombreVacuna'], 'LRBT', 0);
+    $pdf->Cell(80,10, utf8_decode($row['diagnostico']), 'LRBT', 1);
    
 }
 //$pdf->Text("100" , "20 ", "Reporte de Veterinaria");

@@ -24,6 +24,8 @@ echo 'Insertar Expediente
 
 echo "<a href = 'reporte.php'> Reporte </a> <br>";
 
+echo "<a href = 'respaldoGeneral.php'> Respaldar DB </a> <br>";
+
 if ($result = $conexion->query($query)) {
     while ($row = $result->fetch_assoc()) {
         $NumExp = $row["NumeroExpediente"];
